@@ -6,6 +6,7 @@
 
 ```
 $ sudo apt install curl
+$ apt-get install sl 
 
 $ git clone git@github.com:jonathankablan/plexmediaserver-docker-compose.git
 $ cd plexmediaserver-docker-compose
