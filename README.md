@@ -5,6 +5,7 @@
 ---
 
 ```
+
 $ sudo apt install curl
 $ apt-get install sl 
 
@@ -18,6 +19,10 @@ In this instance PUID=1000 and PGID=1000, to find yours use id user as below:
 $ id username
   uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 
+$ sudo usermod -a -G abc abc
+$ sudo usermod -a -G 1000 1000
+$ sudo chown -R abc:abc /home/plexmediaserver-docker-compose/mediaserver  
+$ sudo chown -R 1000:1000 /home/plexmediaserver-docker-compose/mediaserver 
 ```
 
 
@@ -31,7 +36,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 ```
 
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+$ ssh-keygen -t rsa -b 4096 -C "jonathan.kablan@gmail.com"
 
 $ sudo apt-get remove docker docker-engine docker.io containerd runc
 

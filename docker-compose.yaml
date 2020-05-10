@@ -54,7 +54,7 @@ services:
       - TZ=${ENV_TIME_ZONE}
     volumes:
       - ${DIR_MEDIASERVER}/tautulli/config:/config
-      - ${DIR_MEDIASERVER}/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
+      - ${DIR_MEDIASERVER}/tautulli/config/logs:/logs:ro
     ports:
       - 8181:8181
     restart: ${ENV_RESTART}
@@ -134,7 +134,7 @@ services:
     volumes:
       - ${DIR_MEDIASERVER}/jackett/config:/config
       - ${DIR_MEDIASERVER}/jackett/torrentfiles:/downloads
-      - /etc/localtime:/etc/localtime:ro
+      - ${DIR_MEDIASERVER}/etc/localtime:/etc/localtime:ro
     ports:
       - 9117:9117
     restart: ${ENV_RESTART}
