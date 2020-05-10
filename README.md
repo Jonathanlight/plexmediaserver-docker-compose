@@ -14,6 +14,10 @@ $ cd plexmediaserver-docker-compose
 $ ./install.sh
 
 
+$ sudo dpkg -i plexmediaserver_1.19.3.2764-ef515a800_amd64.deb
+$ sudo apt-get update
+
+
 In this instance PUID=1000 and PGID=1000, to find yours use id user as below:
 
 $ id username
