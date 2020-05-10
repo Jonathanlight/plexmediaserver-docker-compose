@@ -28,10 +28,13 @@ services:
       - 32414:32414/udp  
     volumes:
       - /home/plexmediaserver-docker-compose/mediaserver/plex/config:/config
+      - /home/plexmediaserver-docker-compose/mediaserver/plex/transcode:/transcode
+      - /home/plexmediaserver-docker-compose/mediaserver/plex/data:/data
       - /home/plexmediaserver-docker-compose/mediaserver/media/series:/series
       - /home/plexmediaserver-docker-compose/mediaserver/media/movies:/movies
       - /home/plexmediaserver-docker-compose/mediaserver/media/anime:/anime
       - /home/plexmediaserver-docker-compose/mediaserver/media/music:/music
+      - /home/plexmediaserver-docker-compose/mediaserver/media/documentaire:/documentaire
     restart: always
 
   #******************************
