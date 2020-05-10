@@ -134,7 +134,6 @@ services:
     volumes:
       - /home/plexmediaserver-docker-compose/mediaserver/jackett/config:/config
       - /home/plexmediaserver-docker-compose/mediaserver/jackett/torrentfiles:/downloads
-      - /home/plexmediaserver-docker-compose/mediaserver/etc/localtime:/etc/localtime:ro
     ports:
       - 9117:9117
     restart: always
