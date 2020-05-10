@@ -166,10 +166,10 @@ services:
 #           VOLUMES
 #------------------------------
 volumes:
-  /home/plexmediaserver-docker-compose/mediaserver/downloads:
-  /home/plexmediaserver-docker-compose/mediaserver/plex/config:
-  /home/plexmediaserver-docker-compose/mediaserver/media/series:
-  /home/plexmediaserver-docker-compose/mediaserver/media/movies:
-  /home/plexmediaserver-docker-compose/mediaserver/media/anime:
-  /home/plexmediaserver-docker-compose/mediaserver/media/music:
+  - /home/plexmediaserver-docker-compose/mediaserver/downloads:/downloads
+  - /home/plexmediaserver-docker-compose/mediaserver/plex/config:/config
+  - /home/plexmediaserver-docker-compose/mediaserver/media/series:/series
+  - /home/plexmediaserver-docker-compose/mediaserver/media/movies:/movies
+  - /home/plexmediaserver-docker-compose/mediaserver/media/anime:/anime
+  - /home/plexmediaserver-docker-compose/mediaserver/media/music:/music
 
