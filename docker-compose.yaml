@@ -34,6 +34,7 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/media/series:/series
       - /home/plexmediaserver-docker-compose/mediaserver/media/movies:/movies
       - /home/plexmediaserver-docker-compose/mediaserver/media/anime:/anime
+      - /home/plexmediaserver-docker-compose/mediaserver/media/formations:/formations
       - /home/plexmediaserver-docker-compose/mediaserver/media/music:/music
       - /home/plexmediaserver-docker-compose/mediaserver/media/documentaire:/documentaire
     restart: always
