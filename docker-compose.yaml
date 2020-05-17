@@ -1,5 +1,8 @@
 version: "2"
 #################################
+networks:
+  frontend-network:
+    external: true
 services:
   #******************************
   #           webgrabplus
@@ -15,6 +18,8 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/webgrabplus/config:/config
       - /home/plexmediaserver-docker-compose/mediaserver/webgrabplus/data:/data
     restart: always
+    networks:
+      - frontend-network
   #******************************
   #           rutorrent
   #******************************  
@@ -33,6 +38,8 @@ services:
       - 51413:51413
       - 6881:6881/udp
     restart: always
+    networks:
+      - frontend-network
   #******************************
   #           Prometheus
   #******************************
@@ -54,13 +61,15 @@ services:
     links:
       - cadvisor:cadvisor
     networks:
-      - monitoring
+      - frontend-network
   #******************************
   #           Cadvisor
   #******************************
   cadvisor:
     image: google/cadvisor:latest
     container_name: cadvisor
+    networks:
+      - frontend-network
     restart: always
     volumes:
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/rootfs:/rootfs:ro
@@ -101,6 +110,8 @@ services:
     image: linuxserver/plex
     container_name: plex
     network_mode: host
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -136,6 +147,8 @@ services:
   tautulli:
     image: linuxserver/tautulli
     container_name: tautulli
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -154,6 +167,8 @@ services:
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -174,6 +189,8 @@ services:
   radarr:
     image: linuxserver/radarr
     container_name: radarr
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -194,6 +211,8 @@ services:
   lidarr:
     image: linuxserver/lidarr
     container_name: lidarr
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -214,6 +233,8 @@ services:
   jackett:
     image: linuxserver/jackett
     container_name: jackett
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
@@ -232,6 +253,8 @@ services:
   transmission:
     image: linuxserver/transmission
     container_name: transmission
+    networks:
+      - frontend-network
     environment:
       - PUID=1000
       - PGID=1000
