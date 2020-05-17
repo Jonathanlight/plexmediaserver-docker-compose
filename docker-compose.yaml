@@ -1,7 +1,5 @@
 version: "2"
-#------------------------------
-#           SERVICES
-#------------------------------
+#################################
 services:
   #******************************
   #           Prometheus
@@ -46,11 +44,14 @@ services:
     restart: always
     links:
       - prometheus:prometheus
+    ports:
+      - 3000:3000  
     volumes:
       - /home/plexmediaserver-docker-compose/mediaserver/grafana/data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=cd4495
       - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_HTTP_PORT=3000
       - GF_SERVER_DOMAIN=mediaplexunivers.fun
       - GF_SMTP_ENABLED=true
       - GF_SMTP_HOST=smtp.gmail.com:587

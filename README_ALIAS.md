@@ -8,6 +8,7 @@ alias dc-run='docker-compose up -d'
 alias dc-stop='docker-compose stop'
 alias dc-ps='docker-compose ps'
 alias dc-down='docker-compose down'
+alias dc-restart='docker-compose restart'
 
 #Alias
 alias alias-edit='vim ~/.bash_profile'
