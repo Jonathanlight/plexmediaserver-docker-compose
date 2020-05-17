@@ -31,10 +31,10 @@ services:
     container_name: cadvisor
     restart: always
     volumes:
-      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/rootfs:ro
-      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/run:rw
-      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:ro
-      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:ro
+      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/rootfs:/rootfs:ro
+      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/run:/var/run:rw
+      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:/sys:ro
+      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:/var/lib/docker:ro
     expose:
       - 8080
   #******************************
