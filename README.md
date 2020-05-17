@@ -40,6 +40,8 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 ```
 
+docker network create frontend-network
+
 $ ssh-keygen -t rsa -b 4096 -C "jonathan.kablan@gmail.com"
 
 $ sudo apt-get remove docker docker-engine docker.io containerd runc

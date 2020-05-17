@@ -33,9 +33,9 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/rutorrent/config:/config
       - /home/plexmediaserver-docker-compose/mediaserver/downloads:/downloads
     ports:
-      - 80:80
+      - 8099:80
       - 5000:5000
-      - 51413:51413
+      - 51414:51414
       - 6881:6881/udp
     restart: always
     networks:
@@ -56,10 +56,8 @@ services:
       - '--web.route-prefix=/'
       - '--storage.tsdb.retention.time=200h'
       - '--web.enable-lifecycle'
-    expose:
-      - 9090
     ports:
-      - 9090:9090
+      - 9091:9090
     links:
       - cadvisor:cadvisor
     networks:
@@ -79,9 +77,9 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:/sys:ro
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:/var/lib/docker:ro
     ports:
-      - 8080:8080
+      - 8085:8080
     expose:
-      - 8080
+      - 8085
   #******************************
   #           Grafana
   #******************************
