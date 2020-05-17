@@ -51,8 +51,8 @@ services:
       - prometheus_data:/prometheus
       - /home/plexmediaserver-docker-compose/mediaserver/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
-      - '-config.file=/home/plexmediaserver-docker-compose/mediaserver/prometheus/prometheus.yml'
-      - '-storage.local.path=/prometheus'
+      - '--config.file=/home/plexmediaserver-docker-compose/mediaserver/prometheus/prometheus.yml'
+      - '--storage.local.path=/prometheus'
       - '--web.route-prefix=/'
       - '--storage.tsdb.retention.time=200h'
       - '--web.enable-lifecycle'
