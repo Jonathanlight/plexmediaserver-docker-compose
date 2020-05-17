@@ -32,7 +32,7 @@ services:
     restart: always
     volumes:
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/rootfs:ro
-      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/run:/var/run:rw
+      - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/run:rw
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:ro
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:ro
     expose:
