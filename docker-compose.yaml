@@ -48,12 +48,14 @@ services:
     container_name: prometheus
     restart: always
     volumes:
-      - /home/plexmediaserver-docker-compose/mediaserver/prometheus/config:/etc/prometheus/
-      - /home/plexmediaserver-docker-compose/mediaserver/prometheus/data:/prometheus
+      - prometheus_data:/prometheus
+      - /home/plexmediaserver-docker-compose/mediaserver/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '-config.file=/home/plexmediaserver-docker-compose/mediaserver/prometheus/prometheus.yml'
       - '-storage.local.path=/prometheus'
-      - '-alertmanager.url=http://alertmanager:9093'
+      - '--web.route-prefix=/'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
     expose:
       - 9090
     ports:
@@ -77,7 +79,7 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:/sys:ro
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:/var/lib/docker:ro
     ports:
-      - 8005:8080
+      - 8080:8080
     expose:
       - 8080
   #******************************
@@ -90,9 +92,9 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 3000:3000  
+      - 3001:3000  
     volumes:
-      - /home/plexmediaserver-docker-compose/mediaserver/grafana/data:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=cd4495
       - GF_USERS_ALLOW_SIGN_UP=false
@@ -270,4 +272,6 @@ services:
       - 51413:51413
       - 51413:51413/udp
     restart: always
-
+volumes:
+  prometheus_data:
+  grafana_data:
