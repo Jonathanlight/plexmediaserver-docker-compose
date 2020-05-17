@@ -2,6 +2,38 @@ version: "2"
 #################################
 services:
   #******************************
+  #           webgrabplus
+  #******************************
+  webgrabplus:
+    image: linuxserver/webgrabplus
+    container_name: webgrabplus
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+    volumes:
+      - /home/plexmediaserver-docker-compose/mediaserver/webgrabplus/config:/config
+      - /home/plexmediaserver-docker-compose/mediaserver/webgrabplus/data:/data
+    restart: always
+  #******************************
+  #           rutorrent
+  #******************************  
+  rutorrent:
+    image: linuxserver/rutorrent
+    container_name: rutorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /home/plexmediaserver-docker-compose/mediaserver/rutorrent/config:/config
+      - /home/plexmediaserver-docker-compose/mediaserver/downloads:/downloads
+    ports:
+      - 80:80
+      - 5000:5000
+      - 51413:51413
+      - 6881:6881/udp
+    restart: always
+  #******************************
   #           Prometheus
   #******************************
   prometheus:
@@ -21,6 +53,8 @@ services:
       - 9090:9090
     links:
       - cadvisor:cadvisor
+    networks:
+      - monitoring
   #******************************
   #           Cadvisor
   #******************************
@@ -33,6 +67,8 @@ services:
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/run:/var/run:rw
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/sys:/sys:ro
       - /home/plexmediaserver-docker-compose/mediaserver/cadvisor/var/lib/docker:/var/lib/docker:ro
+    ports:
+      - 8005:8080
     expose:
       - 8080
   #******************************
@@ -42,8 +78,8 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     restart: always
-    links:
-      - prometheus:prometheus
+    depends_on:
+      - prometheus
     ports:
       - 3000:3000  
     volumes:
